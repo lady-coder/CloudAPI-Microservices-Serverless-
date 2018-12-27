@@ -299,7 +299,7 @@
     },
     "securityDefinitions": {
       "apikey": {
-        "type": "apiKey",
+        "type": "apiKey", # Should be an actual apikey to invoke url
         "in": "query",
         "name": "apikey"
       }
