@@ -1,0 +1,43 @@
+cloud:
+  aws:
+    region:
+      static: eu-west-1
+    sqs:
+      inboundQueueName: ADE_dev_PdfHeaderExtractorQ
+      outboundQueueName: ADE_out_test
+      errorQueueName: ADE_dev_DeadLetterQ
+    sns:
+      publishToTopic: ADE_dev_ExtractedResultsTopic
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: $tevent0n123
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        default_schema: extraction
+        
+logging:
+  level:
+    ROOT: warn
+    org:
+      springframework:
+        cloud:
+          aws: warn
+    com:
+      omprompt: debug
+  file: logs/excel-extractor-service.log
+
+server:
+  port: 80
+
+timeout:
+  seconds: 5
+
+application:
+  built: replacedByJenkinsAtBuild

@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Book Store API written with spring with the aws-serverless-java-container library
+
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+
+Resources:
+  BookServerlessLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.lambda.bookstore.LambdaHandler::handleRequest
+      Runtime: java8
+      CodeUri: target/AWS-Serverless-Lambda-0.0.1-SNAPSHOT.jar
+      MemorySize: 512
+      Policies: AWSLambdaBasicExecutionRole
+      Timeout: 600
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+
+Outputs:
+  SpringLambdaApi:
+    Description: URL for application
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/v2/books'
+    Export:
+      Name: BooksApi

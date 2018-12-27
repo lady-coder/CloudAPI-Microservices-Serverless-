@@ -1,0 +1,3 @@
+insert into book(id,title,publisher,year,price,author) values (1,'Gone with the Wind', 'Warner Books', 1936, 30.00, 'Margaret Mitchell');
+insert into book(id,title,publisher,year,price,author) values (2,'The Book Thief', 'Alfred A. Knop', 1939, 10.45, 'Markus Zusak');
+insert into book(id,title,publisher,year,price,author) values (3, 'Hunger Games', 'Scholastic Corporation', 2008, 18, 'Suzanne Collins');
